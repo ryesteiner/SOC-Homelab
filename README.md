@@ -1,6 +1,6 @@
 # SOC Homelab: Detecting LSASS Access with LimaCharlie
 
-I built a two-VM lab to practice the full detection loop: generate controlled activity on a Windows endpoint, inspect the resulting telemetry, write a detection, and verify that an alert reaches a downstream destination. The lab was completed in August 2026 and follows the [Simply Cyber / Eric Capuano homelab]([https://](https://www.youtube.com/watch?v=P_Kl2EnF8_A)), with my setup and results documented below.
+I built a two-VM lab to practice the full detection loop: generate controlled activity on a Windows endpoint, inspect the resulting telemetry, write a detection, and verify that an alert reaches a downstream destination. The lab was completed in August 2026 and follows the [Simply Cyber / Eric Capuano homelab]([(https://www.youtube.com/watch?v=P_Kl2EnF8_A)]), with my setup and results documented below.
 
 **What I demonstrated:** A LimaCharlie rule alerted on access to `lsass.exe` during two controlled tests: activity initiated through a Sliver session and a separate PowerShell/ProcDump test. I also forwarded a detection event to a webhook endpoint and inspected the event payload.
 
@@ -64,7 +64,7 @@ The [detection log](assets/lsass-detection-events.jpg) shows `LSASS access` alon
 
 VirtualBox · Windows 11 · Ubuntu Server · Sysmon · LimaCharlie · Sliver · PowerShell · Sysinternals ProcDump · Webhook.site
 
-This project follows the [Simply Cyber / Eric Capuano tutorial](https://youtu.be/oOzihldLz7U). The [original PDF write-up](SOC%20Homelab%20Write%20Up.pdf) preserves the full lab record and screenshots.
+This project follows the [Simply Cyber / Eric Capuano tutorial]([https://www.youtube.com/watch?v=P_Kl2EnF8_A])). The [original PDF write-up](SOC%20Homelab%20Write%20Up.pdf) preserves the full lab record and screenshots.
 
 This is based on the home lab done on the Simply Cyber YouTube page with Eric Capuano.
 
