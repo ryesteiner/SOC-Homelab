@@ -53,12 +53,6 @@ The response used LimaCharlie's `report` action with the name `LSASS access`. Th
 
 The [detection log](assets/lsass-detection-events.jpg) shows `LSASS access` alongside related ProcDump detections in the test run. The [forwarded event payload](assets/webhook-detection-event.jpg) shows the source process and `lsass.exe` target received through the webhook output.
 
-## What I learned and would improve
-
-- The strongest evidence came from correlating the alert with process context: source executable, command line, target process, and the surrounding timeline. An alert title alone is insufficient for triage.
-- The webhook forwards LimaCharlie detections. It is an alert-delivery step, **not** a packet capture or independent proof of C2 network traffic.
-- I disabled Windows Defender components on this disposable VM to allow the simulation. That makes this a controlled detection exercise, not a test of how a normally protected endpoint would behave.
-- The rule was tested against two generated paths in one lab. I have not measured false positives, tuned exclusions, or tested against a broader set of benign process-access events. Those are the next steps before treating it as a production detection.
 
 ## Tools and source material
 
