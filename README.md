@@ -1,6 +1,6 @@
 # SOC Homelab: Detecting LSASS Access with LimaCharlie
 
-I built a two-VM lab to practice the full detection loop: generate controlled activity on a Windows endpoint, inspect the resulting telemetry, write a detection, and verify that an alert reaches a downstream destination. The lab was completed in August 2026 and follows the [Simply Cyber / Eric Capuano homelab]([(https://www.youtube.com/watch?v=P_Kl2EnF8_A)]), with my setup and results documented below.
+I built a two-VM lab to practice the full detection loop: generate controlled activity on a Windows endpoint, inspect the resulting telemetry, write a detection, and verify that an alert reaches a downstream destination. The lab was completed in August 2026 and follows a Simply Cyber / Eric Capuano homelab tutorial, with my setup and results documented below.
 
 **What I demonstrated:** A LimaCharlie rule alerted on access to `lsass.exe` during two controlled tests: activity initiated through a Sliver session and a separate PowerShell/ProcDump test. I also forwarded a detection event to a webhook endpoint and inspected the event payload.
 
@@ -49,18 +49,24 @@ The response used LimaCharlie's `report` action with the name `LSASS access`. Th
 
 ## Evidence
 
+**Detection rule.** The rule matches `SENSITIVE_PROCESS_ACCESS` events where the target file path ends in `lsass.exe`, then reports `LSASS access`.
+
 ![LimaCharlie rule matching the target file path lsass.exe](assets/lsass-detection-rule.jpg)
 
-The [detection log](assets/lsass-detection-events.jpg) shows `LSASS access` alongside related ProcDump detections in the test run. The [forwarded event payload](assets/webhook-detection-event.jpg) shows the source process and `lsass.exe` target received through the webhook output.
+**Detection log.** `LSASS access` appears alongside related ProcDump detections in the test run.
+
+![LimaCharlie detection entries for LSASS access and ProcDump activity](assets/lsass-detection-events.jpg)
+
+**Forwarded event.** The webhook output contains source-process details and the `lsass.exe` target.
+
+![Forwarded detection event with source and target process fields](assets/webhook-detection-event.jpg)
 
 
 ## Tools and source material
 
 VirtualBox · Windows 11 · Ubuntu Server · Sysmon · LimaCharlie · Sliver · PowerShell · Sysinternals ProcDump · Webhook.site
 
-This project follows the [Simply Cyber / Eric Capuano tutorial]([https://www.youtube.com/watch?v=P_Kl2EnF8_A])). The [original PDF write-up](SOC%20Homelab%20Write%20Up.pdf) preserves the full lab record and screenshots.
-
-This is based on the home lab done on the Simply Cyber YouTube page with Eric Capuano.
+This project follows a Simply Cyber / Eric Capuano tutorial. The [original PDF write-up](SOC%20Homelab%20Write%20Up.pdf) preserves the full lab record and screenshots.
 
 Key things used:
 
