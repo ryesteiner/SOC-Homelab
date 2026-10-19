@@ -1,6 +1,6 @@
 # SOC Homelab: Detecting LSASS Access with LimaCharlie
 
-I built a two-VM lab to practice the full detection loop: generate controlled activity on a Windows endpoint, inspect the resulting telemetry, write a detection, and verify that an alert reaches a downstream destination. The lab was completed in August 2026 and follows the [Simply Cyber / Eric Capuano homelab](https://youtu.be/oOzihldLz7U), with my setup and results documented below.
+I built a two-VM lab to practice the full detection loop: generate controlled activity on a Windows endpoint, inspect the resulting telemetry, write a detection, and verify that an alert reaches a downstream destination. The lab was completed in August 2026 and follows the [Simply Cyber / Eric Capuano homelab]([https://](https://www.youtube.com/watch?v=P_Kl2EnF8_A)), with my setup and results documented below.
 
 **What I demonstrated:** A LimaCharlie rule alerted on access to `lsass.exe` during two controlled tests: activity initiated through a Sliver session and a separate PowerShell/ProcDump test. I also forwarded a detection event to a webhook endpoint and inspected the event payload.
 
